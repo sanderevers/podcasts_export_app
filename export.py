@@ -48,9 +48,9 @@ def export(episodes, output_dir, set_progress=None, emit_message=print):
             set_progress(int(counter / len(episodes) * 100))
         counter += 1
 
-        safe_title = title.replace('/', '|').replace(':', ',')
-        safe_podcast = podcast.replace('/', '|').replace(':', ',')
-        safe_author = author.replace('/', '|').replace(':', ',')
+        safe_title = title.replace('/', '-').replace(':', ',').replace('#', '_').replace('?', '_')
+        safe_podcast = podcast.replace('/', '-').replace(':', ',').replace('#', '_').replace('?', '_')
+        safe_author = author.replace('/', '-').replace(':', ',').replace('#', '_').replace('?', '_')
         pubdate = datetime.datetime(2001, 1, 1) + datetime.timedelta(seconds=zpubdate)
 
         podcast_path = os.path.join(output_dir, safe_podcast)
